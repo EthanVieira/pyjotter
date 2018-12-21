@@ -16,7 +16,7 @@ class Menu:
     def display_menu(self):
         print("""
         ---------------
-        Light Book Menu
+        Pyjotter Menu
         ---------------
 
         1. Show all Notes
@@ -63,7 +63,7 @@ class Menu:
             self.notebook.modify_tags(id, tags)
 
     def quit(self):
-        print("Quitting Light Book...")
+        print("Quitting Pyjotter...")
         sys.exit(0)
 
 if __name__ == "__main__":
