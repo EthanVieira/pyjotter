@@ -1,0 +1,4 @@
+- save Notes
+- exceptions
+- options after action
+- search notes based on date
