@@ -1,7 +1,16 @@
 import datetime
+import os
 
 # The next id for new notes. This gives each note a unique identifier.
-last_id = 0
+with open ('notes.txt', 'a') as f:
+    if os.stat('notes.txt').st_size == 0:
+        last_id = 0
+        f.write('0' + os.linesep)
+    else:
+        fr = open('notes.txt', 'r')
+        last_id = int(fr.readline())
+        fr.close()
+
 
 class Notebook:
     '''A collection of notes that can be editted and searched.'''
@@ -13,6 +22,13 @@ class Notebook:
     def new_note(self, memo, tags=''):
         '''Write a new note (memo) and save it to the notebook.'''
         self.notes.append(Note(memo, tags))
+        with open ('notes.txt', 'a') as f:
+            f.write(str(self.notes[-1].id) + ' ' + memo + tags + os.linesep)
+        with open ('notes.txt') as fr:
+            lines = fr.readlines()
+        lines[0] = str(last_id) + os.linesep
+        with open('notes.txt', 'w') as f:
+            f.writelines(lines)
 
     def _find_note(self, id):
         '''Finds any saved note with the given id.'''

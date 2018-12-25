@@ -2,3 +2,4 @@
 - exceptions
 - options after action
 - search notes based on date
+- fix edit bug
